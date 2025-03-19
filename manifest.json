@@ -1,0 +1,62 @@
+{
+  "name": "BingoChessX",
+  "description": "BingoChess Chrome extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "BingoChessX",
+    "default_popup": "options.html",
+    "default_icon": "icon.png"
+  },
+
+  "content_scripts": [
+    {
+      "js": [
+        "vendor/webextension-polyfill/dist/browser-polyfill.min.js",
+        "scripts/UserPrefs.js",
+        "scripts/MutationUtils.js",
+        "scripts/MoveEmitter.js",
+        "scripts/GameStateEmitter.js",
+        "scripts/BingoChessX.js"
+      ],
+      "matches": [
+        "https://*.lichess.org/*"
+      ],
+
+      "permissions": [
+        "http://localhost/*",
+        "https://localhost/*"
+      ],
+
+      "host_permissions": [
+        "http://localhost/*",
+        "ws://localhost/*"
+      ],
+
+      "run_at": "document_idle",
+      "all_frames": false
+
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "ogg/*"
+      ],
+      "matches": [
+        "*://*/*"
+      ]
+    }
+  ],
+
+  "permissions": [
+    "identity",
+    "storage",
+    "tabs"
+  ],
+
+  "options_ui": {
+    "page": "options.html"
+  }
+}

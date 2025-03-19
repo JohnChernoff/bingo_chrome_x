@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>dmitlichess options</title>
+
+    <link href="styles/main.css" rel="stylesheet">
+  </head>
+  <body class="">
+    <h2>Options</h2>
+
+    <div class="onoff">
+      <input type="checkbox" id="enabled" class="tgl tgl-flip" />
+      <label for="enabled" class="tgl-btn" data-on="Enabled" data-off="Disabled"></label>
+    </div>
+
+    <div class="opt_main">
+      <label for="input_ante">Cost to buy a Bingo Card</label>
+      <input id="input_ante" type="range" min="10" max="1000" step="10" class="rtl" data-saveOn="change" />
+
+      <label for="input_instabet">Cost to make an instabet</label>
+      <input id="input_instabet" type="range" min="10" max="1000" step="10" class="rtl" data-saveOn="change" />
+
+      <label for="select_card_type">Bingo Card Type:</label>
+      <select name="card_type" id="select_card_type" data-saveOn="change">
+        <option value="no_piece">No Pieces</option>
+        <option value="all_piece">All Pieces</option>
+        <option value="cross">Pieces in a Cross Pattern</option>
+        <option value="free_edge">No Pieces along the Edges</option>
+      </select>
+      <div class="butt_field">
+        <button id="butt_serv_url">Set Server URL</button>
+        <p id="txt_serv_url" class="butt_pg"></p>
+      </div>
+      <div class="butt_field">
+        <button id="butt_twitch"></button>
+        <p id="txt_twitch_id" class="butt_pg"></p>
+      </div>
+    </div>
+
+    <footer>
+      <span class="actions">
+        <a id="default" class="button-link">Restore defaults</a>
+      </span>
+
+      <span class="links">
+        <a class="button-link" href="https://github.com/vincentsimard/dmitlichess/blob/master/FAQ.md">FAQ</a>
+        <a class="button-link" href="https://streamlabs.com/vsim/donate">Donate</a>
+      </span>
+    </footer>
+    <div id="status"></div>
+    <script src="vendor/webextension-polyfill/dist/browser-polyfill.min.js"></script>
+    <script src="scripts/UserPrefs.js"></script>
+    <script src="scripts/options.js"></script>
+  </body>
+</html>
