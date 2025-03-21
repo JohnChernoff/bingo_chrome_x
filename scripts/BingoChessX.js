@@ -19,12 +19,13 @@ class BingoChessX {
     if (this.options.enabled && this.options.twitch_token !== "") {
       let startData = { "gid": "?", "token": this.options.twitch_token }; //TODO: get gid
       console.log('starting new game...');
-      fetch('http://localhost:7070/start', {
+      fetch(this.options.bingo_bot_url + '/start', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(startData)
+        body: JSON.stringify(startData),
+        mode: 'cors' // Ensure CORS mode is enabled
       }); //.then(r => console.log(r));
     }
   }
@@ -33,7 +34,7 @@ class BingoChessX {
     if (this.options.enabled && this.options.twitch_token !== "") {
       let move = {"move": notation.detail.notation, "token": this.options.twitch_token};
       console.log('new_move', move.move);
-      fetch('http://localhost:7070/move', {
+      fetch(this.options.bingo_bot_url + '/move', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
@@ -46,7 +47,7 @@ class BingoChessX {
   addListeners = (target) => {
     // Moves and game events
     target.addEventListener('move', e => this.handleMove(e));
-    target.addEventListener('capture', e => console.log('capture', e));
+    target.addEventListener('capture', e => this.handleMove(e));
     target.addEventListener('check', () => console.log('check'));
     target.addEventListener('start', () => this.handleStart());
     target.addEventListener('state', e => {

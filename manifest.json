@@ -25,12 +25,14 @@
 
       "permissions": [
         "http://localhost/*",
-        "https://localhost/*"
+        "https://localhost/*",
+        "https://chess.bingo/twitchsrv/*"
       ],
 
       "host_permissions": [
         "http://localhost/*",
-        "ws://localhost/*"
+        "ws://localhost/*",
+        "https://chess.bingo/twitchsrv/*"
       ],
 
       "run_at": "document_idle",
