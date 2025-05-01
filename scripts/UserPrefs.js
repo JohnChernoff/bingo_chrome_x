@@ -5,7 +5,7 @@ const defaults = {
   instabet: 50,
   card_type: 'free_edge',
   enabled: false,
-  bingo_bot_url: 'https://chess.bingo:6667/', //http://localhost/twitchsrv
+  bingo_bot_url: 'https://chess.bingo/twitchsrv', //http://localhost/twitchsrv
   twitch_token: ''
 };
 

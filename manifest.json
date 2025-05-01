@@ -1,12 +1,18 @@
 {
   "name": "BingoChessX",
   "description": "BingoChess Chrome extension",
-  "version": "1.0",
+  "version": "1.2",
   "manifest_version": 3,
   "action": {
     "default_title": "BingoChessX",
     "default_popup": "options.html",
-    "default_icon": "icon.png"
+    "default_icon": "img/icon-128c.png"
+  },
+
+  "icons": {
+    "16": "img/icon-16.ico",
+    "36": "img/icon-36.png",
+    "128": "img/icon-128c.png"
   },
 
   "content_scripts": [

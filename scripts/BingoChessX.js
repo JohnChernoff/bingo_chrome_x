@@ -2,17 +2,15 @@
 
 class BingoChessX {
   constructor(movesElement) {
+    if (!movesElement) {
+      throw new Error('Move list with notation not found');
+    }
     this.movesElement = movesElement;
     this.options = {};
-    if (movesElement) {
-      this.emitters = {
-        moves: new MoveEmitter(this.movesElement, this.movesElement),
-        gameStates: new GameStateEmitter(this.movesElement, this.movesElement)
-      };
-    }
-    else {
-      console.log('moves element not found');
-    }
+    this.emitters = {
+      moves: new MoveEmitter(this.movesElement, this.movesElement),
+      gameStates: new GameStateEmitter(this.movesElement, this.movesElement)
+    };
   }
 
   handleStart = () => {
@@ -24,7 +22,7 @@ class BingoChessX {
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(startData),
+        body: startData,
         mode: 'cors' // Ensure CORS mode is enabled
       }); //.then(r => console.log(r));
     }
@@ -70,7 +68,7 @@ class BingoChessX {
 
   init = async () => {
     if (this.movesElement) {
-      console.log("Init: Welcome to BingoChessX 0.1!");
+      console.log("Init: Welcome to BingoChessX 1.2!");
       const status = document.querySelector('.status');
       const isGameOver = !!status;
       this.addListeners(this.movesElement);
@@ -112,6 +110,11 @@ const observer = new MutationObserver((mutations, observerInstance) => {
   // https://github.com/ornicar/lila/blob/master/ui/round/css/_constants.scss#L10
   // The actual element name is changed often.
   const movesElement = document.querySelector('l4x');
+
+  if (!movesElement) {
+    return;
+  }
+
   window.bingX = new BingoChessX(movesElement);
   window.bingX.init().then(() => window.bingX.handleStart());
   observerInstance.disconnect();

@@ -26,7 +26,7 @@ class OptionsCtrl {
       instabet: document.getElementById('input_instabet'),
       card_type: document.getElementById('select_card_type'),
       status: document.getElementById('status'),
-      bingo_bot_url: document.getElementById('txt_serv_url'),
+      bingo_bot_url: document.getElementById('input_srv'),
       defaultButton: document.getElementById('default')
     };
 
@@ -43,9 +43,8 @@ class OptionsCtrl {
           });
       }
     });
-
-    document.getElementById("butt_serv_url").addEventListener("click", async () => {
-      this.elements.bingo_bot_url.innerText = prompt("Enter new Server URL",this.elements.bingo_bot_url.innerText);
+    document.getElementById("input_srv").addEventListener("change", async () => {
+      console.log("Server changed: ",document.getElementById("input_srv").value);
       this.save(true);
     });
 
@@ -67,7 +66,7 @@ class OptionsCtrl {
       ante: this.elements.ante.value,
       instabet: this.elements.instabet.value,
       card_type: this.elements.card_type.value,
-      bingo_bot_url: this.elements.bingo_bot_url.innerText,
+      bingo_bot_url: this.elements.bingo_bot_url.value,
       twitch_token: twitchToken,
     }).then(doSaved);
   };
@@ -78,7 +77,7 @@ class OptionsCtrl {
     this.elements.ante.value = UserPrefs.defaults.ante;
     this.elements.instabet.value = UserPrefs.defaults.instabet;
     this.elements.card_type.value = UserPrefs.defaults.card_type;
-    this.elements.bingo_bot_url.innerText = UserPrefs.defaults.bingo_bot_url;
+    this.elements.bingo_bot_url.value = UserPrefs.defaults.bingo_bot_url;
     this.save(); //don't reset token
   };
 
@@ -88,7 +87,7 @@ class OptionsCtrl {
     this.elements.ante.value = options.ante;
     this.elements.instabet.value = options.instabet;
     this.elements.card_type.value = options.card_type;
-    this.elements.bingo_bot_url.innerText = options.bingo_bot_url;
+    this.elements.bingo_bot_url.value = options.bingo_bot_url;
     setToken(options.twitch_token);
   };
 

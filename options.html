@@ -29,9 +29,13 @@
         <option value="cross">Pieces in a Cross Pattern</option>
         <option value="free_edge">No Pieces along the Edges</option>
       </select>
-      <div class="butt_field">
-        <button id="butt_serv_url">Set Server URL</button>
-        <p id="txt_serv_url" class="butt_pg"></p>
+      <div>
+        <label for="input_srv">Server</label>
+        <input type="text" id="input_srv" list="servList">
+        <datalist id="servList">
+          <option value="http://localhost/twitchsrv">
+          <option value="https://chess.bingo/twitchsrv">
+        </datalist>
       </div>
       <div class="butt_field">
         <button id="butt_twitch"></button>
@@ -45,8 +49,7 @@
       </span>
 
       <span class="links">
-        <a class="button-link" href="https://github.com/vincentsimard/dmitlichess/blob/master/FAQ.md">FAQ</a>
-        <a class="button-link" href="https://streamlabs.com/vsim/donate">Donate</a>
+        <a class="button-link" href="https://github.com/JohnChernoff/bingo_chrome_x">GitHub</a>
       </span>
     </footer>
     <div id="status"></div>
